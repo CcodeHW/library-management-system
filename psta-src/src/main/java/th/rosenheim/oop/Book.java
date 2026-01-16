@@ -1,7 +1,6 @@
-
 package th.rosenheim.oop;
-import java.time.LocalDate;
 
+import java.time.LocalDate;
 
 /**
  * @author Chuan Hn Wong - 1084380
@@ -86,7 +85,7 @@ public class Book extends LibraryItem implements Borrowable,Comparable<Book> {
     /**
      * Returns this book back to the library
      * marks the book as available and clears the borrower's information
-     * @throws IllegalStateException if book is not borrowed and cannot be returned
+     * @return true if book is successfully returned, false otherwise
      */
     @Override
     public boolean returnItem() {
@@ -95,9 +94,8 @@ public class Book extends LibraryItem implements Borrowable,Comparable<Book> {
             borrowedBy = null;
             dueDate = null;
             return true;
-        } else {
-            throw new IllegalStateException("Book is not borrowed and cannot be returned");
         }
+        return false;
     }
 
     /**

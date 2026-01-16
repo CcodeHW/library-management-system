@@ -1,11 +1,12 @@
 package th.rosenheim.oop;
+
 import java.time.LocalDate;
 
 /**
  * @author Chuan Hn Wong - 1084380
  * Concrete class - Magazine in the library
  */
-public class Magazine extends LibraryItem implements Borrowable{
+public class Magazine extends LibraryItem implements Borrowable {
     private String issn;
     private int issueNumber;
     private String publisher;
@@ -73,8 +74,8 @@ public class Magazine extends LibraryItem implements Borrowable{
      * Borrows this magazine for a specific user based on the entered userId
      * marks the magazine as unavailable and sets a due date 1 week from now after the magazine has been borrowed
      * @param userId the unique identifier of the user borrowing the magazine
-     * @return true if item has been successfully borrowed, false otherwise
      * @throws IllegalArgumentException if user ID is null or empty
+     * @return true if item has been successfully borrowed, false otherwise
      */
     @Override
     public boolean borrow(String userId){
@@ -93,7 +94,7 @@ public class Magazine extends LibraryItem implements Borrowable{
     /**
      * Returns this magazine back to the library
      * marks the magazine as available and clears the borrower's information
-     * @throws IllegalStateException if magazine is not borrowed and cannot be returned
+     * @return true if magazine is successfully returned, false otherwise
      */
     @Override
     public boolean returnItem(){
@@ -102,9 +103,8 @@ public class Magazine extends LibraryItem implements Borrowable{
             borrowedBy = null;
             dueDate = null;
             return true;
-        } else {
-            throw new IllegalStateException("Magazine is not borrowed and cannot be returned");
         }
+        return false;
     }
 
     /**

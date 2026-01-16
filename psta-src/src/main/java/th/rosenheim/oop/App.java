@@ -2,6 +2,12 @@ package th.rosenheim.oop;
 
 import java.util.*;
 
+/**
+ * @author Chuan Hn Wong - 1084380
+ * Application Class demonstrating the Library Mnagement System
+ * Demomstrates all OOP concepts for the PStA
+ */
+
 public class App {
 
 
@@ -25,9 +31,9 @@ public class App {
         library.addItem(magazine1);
 
         System.out.println("=== Library User Registration ===");
-        LibraryUser user1 = new LibraryUser("S001", "Bob Marley", "bobmarley@gmail.com");
-        LibraryUser user2 = new LibraryUser("S002", "Kelly Lee", "kellylee@gmail.com");
-        LibraryUser user3 = new LibraryUser("S003", "Christine Smith", "christine@yahoo.com");
+        LibraryUser user1 = new LibraryUser("S100", "Bob Marley", "bobmarley@gmail.com");
+        LibraryUser user2 = new LibraryUser("S101", "Kelly Lee", "kellylee@gmail.com");
+        LibraryUser user3 = new LibraryUser("S102", "Christine Smith", "christine@yahoo.com");
 
         library.registerUser(user1);
         library.registerUser(user2);
@@ -43,12 +49,12 @@ public class App {
         }
 
         System.out.println("=== Borrowing Functionality ===");
-        boolean borrowSuccess = library.borrowItem("B100", "S001");
+        boolean borrowSuccess = library.borrowItem("B100", "S100");
         System.out.println(" Borrow 'Harry Potter': " +(borrowSuccess ? "SUCCESS" : "FAILED"));
 
         System.out.println();
 
-        boolean borrowFail = library.borrowItem("B100", "S001");
+        boolean borrowFail = library.borrowItem("B100", "S100");
         System.out.println(" Borrow the same book 'Harry Potter' again: " +(borrowFail ? "SUCCESS" : "FAILED"));
 
         System.out.println();
@@ -86,8 +92,12 @@ public class App {
 
         System.out.println();
         System.out.println("=== Returning Functionality ===");
-        boolean returnSuccess = library.returnItem("B100", "S001");
+        boolean returnSuccess = library.returnItem("B100", "S100");
         System.out.println(" Return 'Harry Potter': " +(returnSuccess ? "SUCCESS" : "FAILURE"));
+        System.out.println();
+        boolean returnFail = library.returnItem("B100","S100");
+        System.out.println(" Return 'Harry Potter' again: " +(returnFail ? "SUCCESS" : "FAILURE"));
+
 
     }
 }

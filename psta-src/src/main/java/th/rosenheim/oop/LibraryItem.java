@@ -1,4 +1,5 @@
 package th.rosenheim.oop;
+
 /**
  * @author Chuan Hn Wong - 1084380
  * Abstract base class for all library items.

@@ -1,4 +1,5 @@
 package th.rosenheim.oop;
+
 /**
  * @author Chuan Hn Wong - 1084380
  * Exception thrown a user is not found in the system

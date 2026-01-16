@@ -1,4 +1,5 @@
 package th.rosenheim.oop;
+
 /**
  * @author Chuan Hn Wong - 1084380
  * Interface for items that can be borrowed and returned
@@ -15,7 +16,6 @@ public interface Borrowable {
     /**
      * Method to return an item
      * @return true if item is successfully returned, false otherwise
-     * @throws IllegalArgumentException if the item is currently not borrowed
      */
     boolean returnItem();
 

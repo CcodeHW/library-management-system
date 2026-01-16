@@ -1,4 +1,5 @@
 package th.rosenheim.oop;
+
 /**
  * @author Chuan Hn Wong - 1084380
  * Exception thrown when an item is not found in the system
@@ -11,7 +12,7 @@ public class ItemNotFoundException extends RuntimeException {
      * @param itemId the ID of the item that was not found
      */
     public ItemNotFoundException(String itemId){
-        super("Item ID: " +itemId+ " not found in the system");
+        super("Item with ID: " +itemId+ " not found in the system");
     }
 
     /**
@@ -20,6 +21,6 @@ public class ItemNotFoundException extends RuntimeException {
      * @param cause the cause of the exception
      */
     public ItemNotFoundException(String itemId, Throwable cause){
-        super("Item ID: " +itemId+ " not found in the system", cause);
+        super("Item with ID: " +itemId+ " not found in the system", cause);
     }
 }
