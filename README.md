@@ -51,4 +51,4 @@ calling getDetails() polymorphically
 - Library.java search methods: Java Stream API for filtering and searching items by title/author
 
 ## UML Class Diagram
-![UML Class Diagram](docs/UML%20Class%20Diagram%20(PStA).png)
+![UML Class Diagram](docs/UML_Class_Diagram%20(PStA).png)
