@@ -1,24 +1,54 @@
-# OOP PStA Template Project
+# Library Management System
 
-### Download as ZIP
-- To get the template project for your PStA, click on "Code-Download source code - zip"
-- After downloading the source code, unzip the content. 
-- In GitLab, switch to your repository. Clone your repository with `git clone [yourProjectURL]`.
-- On your computer, replace the content of the cloned folder with the content of the ZIP file.
-- Afterwards, add the new content with `git add .` to your local repository. Perform a commit with `git commit -m "Initial setup"` and push it with `git push -u origin main` into your GitLab repository.
+## Project Description
+A comprehensive library management system built in Java that demonstrates 
+object-oriented programming principles. The system manages library items
+(books abd magazines) and users, supporting borrowing, returning and searching 
+functionality. It implements a clean architecture with proper exception handling,
+collections usage and testing.
 
-## Open your project in IntelliJ
+## Usage Case
+Scenario: A student wants to borrow a book from the library
 
-To open the project from IntelliJ move to File>Open... 
-![With Alrady Opened Project](.pictures/OpenProject.png)
+1. Registration: Student "Bob" registers in the system with ID "S100".
+2. Search: Student searches for "Harry Potter" by title.
+3. Borrow: Student borrows the book with ID "B100".
+4. System Actions: 
+                - System verifies the book exists and is available
+                - System checks the user is registered
+                - System updates book status to "borrowed"
+                - System sets due date to 2 weeks from now
+                - System adds book to user's borrowed items list
+5. Return: After 2 weeks, student returns the book, system updates status 
+and removes from borrowed list.
 
-To open the project from the Welcome Screen click open
-![From Welcome Screen](.pictures/OpenProjectFromWelcome.png)
+## Technical Implementation
+1. Inheritance: 
+- 'Book extends LibraryItem', 
+- 'Magazine extends LibraryItem' 
+- 'ItemNotFoundException & UserNotFoundException' extends RuntimeException
+2. Abstract Class:
+- LibraryItem.java abstract class with abstract method - getDetails()
+3. Interface: 
+- Borrowable.java Interface with borrow(), returnItem() and getDueDate() contracts
+4. Polymorphism:
+- App.java lines 42-45: List of LibraryItem containing both Book and Magazine Objects, 
+calling getDetails() polymorphically
+5. Collection Framework: 
+- Library.java: uses HashMao<String,LibraryItem> in LibraryUser
+6. JUnit Tests: 
+- Tests for borrowing, returning, searching and handling exception etc
+7. Comparable Interface: 
+- Book.java implements 'Comparable<Book>' for natural ordering by title
+8. Comparator:
+- BookTitleComparator.java: custom comparator for sorting books by title (case-insensitive)
+9. Exception: 
+- Custom Exceptions: ItemNotFoundException & UserNotFoundException
+- Standard Exceptions: IllegalArgumentException, IllegalStateException
+10. JavaDoc Documentation:
+- Comprehensive Javadoc comments for all classes, methods and constructors
+11. Algorithmic Aspect: 
+- Library.java search methods: Java Stream API for filtering and searching items by title/author
 
-Then navigate to your project folder and open the psta-src folder in IntelliJ
-![Open Src Folder](.pictures/SelectFolder.png)
-
-After that the setup should be done automatically.
-
-The main class is: `src/main/java/th/rosenheim/oop/App.java`
-![Main Class](.pictures/Main_Class.png)
+## UML Class Diagram
+![UML Class Diagram](docs/UML%20Class%20Diagram%20(PStA).png)
