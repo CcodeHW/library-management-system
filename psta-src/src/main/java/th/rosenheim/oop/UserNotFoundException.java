@@ -11,7 +11,7 @@ public class UserNotFoundException extends RuntimeException {
      * @param userId the ID of the user that was not found
      */
     public UserNotFoundException(String userId){
-        super("User with ID: " +userId+ " not found in the system.");
+        super("User ID not found in the system.");
     }
 
     /**
@@ -20,6 +20,6 @@ public class UserNotFoundException extends RuntimeException {
      * @param cause the cause of the exception
      */
     public UserNotFoundException(String userId, Throwable cause){
-        super("User with ID: " +userId+ " not found in the system.", cause);
+        super("User ID not found in the system.", cause);
     }
 }

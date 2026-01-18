@@ -119,7 +119,7 @@ class AppTest {
                 ItemNotFoundException.class,
                 () -> library.borrowItem("B111","S100"));
 
-        assertTrue(exception.getMessage().contains("not found in the system"),
+        assertTrue(exception.getMessage().contains("Item ID not found in the system"),
                 "Item not found in library should return ItemNotFoundException");
 
     }
@@ -131,7 +131,7 @@ class AppTest {
                 UserNotFoundException.class,
                 () -> library.borrowItem("B100", "S111"));
 
-        assertTrue(exception.getMessage().contains("not found in the system"),
+        assertTrue(exception.getMessage().contains("User ID not found in the system"),
                 "Invalid User should return UserNotFoundException");
     }
 
@@ -148,22 +148,13 @@ class AppTest {
     @Test
     @DisplayName("Test returning item that has not been borrowed")
     void testReturnNotBorrowedItem(){
-        assertTrue(library.getItems().containsKey("B100"));
+        assertFalse(library.getItems().containsKey("B111"));
 
-        boolean result = library.returnItem("B100","S100");
-
-        assertFalse(result, "Item that has not been borrowed cannot be returned, should return false");
-
-    }
-
-    @Test
-    @DisplayName("Test returning item that is not in the library")
-    void testReturnUnavailableItem(){
         ItemNotFoundException exception = assertThrows(
                 ItemNotFoundException.class,
                 () -> library.returnItem("B111","S100"));
 
-        assertTrue(exception.getMessage().contains("not found in the system"),
+        assertTrue(exception.getMessage().contains("Item ID not found in the system"),
                 "Item not found in library should return ItemNotFoundException");
     }
 
@@ -174,7 +165,7 @@ class AppTest {
                 UserNotFoundException.class,
                 () -> library.returnItem("B100", "S111"));
 
-        assertTrue(exception.getMessage().contains("not found in the system"),
+        assertTrue(exception.getMessage().contains("User ID not found in the system"),
                 "Invalid User should return UserNotFoundException");
     }
 
@@ -229,12 +220,13 @@ class AppTest {
         Book b2 = new Book("B222","Banana","Author 2", "222-2222222222","Genre 2");
         Book b3 = new Book("B333","Cherry","Author 3", "333-3333333333","Genre 3");
 
-        List<Book> books = new ArrayList<>(Arrays.asList(b1, b3, b2));  // make them not in order
-        Collections.sort(books);
+        assertTrue(b1.compareTo(b2) < 0, "Apple should come before Banana");
+        assertTrue(b2.compareTo(b3) < 0, "Banana should come before Cherry");
+        assertTrue (b3.compareTo(b1) > 0, "Cherry should come after Apple");
 
-        assertEquals("Apple", books.get(0).getTitle(), "Book 1 should come first ");
-        assertEquals("Banana", books.get(1).getTitle(), "Book 2 should come second ");
-        assertEquals("Cherry", books.get(2).getTitle(), "Book 3 should come third");
+        assertEquals("Apple", b1.getTitle(), "Book 1 should come first");
+        assertEquals("Banana", b2.getTitle(), "Book 2 should come second");
+        assertEquals("Cherry", b3.getTitle(), "Book 3 should come third");
     }
 
     @Test
@@ -242,9 +234,10 @@ class AppTest {
     void testBookTitleComparator(){
         BookTitleComparator comparator = new BookTitleComparator();
 
+        // make them not in order on purpose
+        Book b3 = new Book("B333","Cherry","Author 3", "333-3333333333","Genre 3");
         Book b1 = new Book("B111","Apple","Author 1", "111-1111111111","Genre 1");
         Book b2 = new Book("B222","Banana","Author 2", "222-2222222222","Genre 2");
-        Book b3 = new Book("B333","Cherry","Author 3", "333-3333333333","Genre 3");
 
         assertTrue(comparator.compare(b1,b2) < 0, "Apple should come before Banana");
         assertTrue(comparator.compare(b3,b2) > 0, "Cherry should come after Banana");

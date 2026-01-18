@@ -12,7 +12,7 @@ public class ItemNotFoundException extends RuntimeException {
      * @param itemId the ID of the item that was not found
      */
     public ItemNotFoundException(String itemId){
-        super("Item with ID: " +itemId+ " not found in the system");
+        super("Item ID not found in the system");
     }
 
     /**
@@ -21,6 +21,6 @@ public class ItemNotFoundException extends RuntimeException {
      * @param cause the cause of the exception
      */
     public ItemNotFoundException(String itemId, Throwable cause){
-        super("Item with ID: " +itemId+ " not found in the system", cause);
+        super("Item ID not found in the system", cause);
     }
 }
