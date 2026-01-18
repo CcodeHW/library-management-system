@@ -97,6 +97,7 @@ public class App {
         System.out.println();
         boolean returnFail = library.returnItem("B100","S100");
         System.out.println(" Return 'Harry Potter' again: " +(returnFail ? "SUCCESS" : "FAILURE"));
+        System.out.println();
 
 
     }
