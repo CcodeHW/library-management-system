@@ -148,9 +148,11 @@ class AppTest {
     @Test
     @DisplayName("Test returning item that has not been borrowed")
     void testReturnNotBorrowedItem(){
-        boolean returnNotBorrowedItem = library.returnItem("B111","S100");
+        ItemNotFoundException exception = assertThrows(
+                ItemNotFoundException.class,
+                () -> library.returnItem("B111","S100"));
 
-        assertFalse(returnNotBorrowedItem,"Item that has not been borrowed cannot be returned, should return false");
+        assertTrue(exception.getMessage().contains("not found in the system"),"Item that has not been borrowed cannot be returned");
     }
 
     @Test
@@ -218,9 +220,9 @@ class AppTest {
         List<Book> books = List.of(b1, b3, b2); // make them not in order
         List<Book> sorted = books.stream().sorted().toList();
 
-        assertEquals("Book1", sorted.get(0).getTitle(), "Book 1 should come first ");
-        assertEquals("Book2", sorted.get(1).getTitle(), "Book 2 should come second ");
-        assertEquals("Book3", sorted.get(2).getTitle(), "Book 3 should come third");
+        assertEquals("Apple", sorted.get(0).getTitle(), "Book 1 should come first ");
+        assertEquals("Banana", sorted.get(1).getTitle(), "Book 2 should come second ");
+        assertEquals("Cherry", sorted.get(2).getTitle(), "Book 3 should come third");
     }
 
     @Test
