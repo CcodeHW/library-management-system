@@ -116,7 +116,7 @@ public class Library {
             throw new IllegalArgumentException("Item with ID: " +itemId+ " is not borrowable");
         }
 
-        // check if user and item is in the system
+        // check if the user and item is in the system
         Borrowable borrowable = (Borrowable) itemToBeBorrowed;
         if (borrowable.borrow(userId)) {
             user.borrowItem(itemToBeBorrowed);

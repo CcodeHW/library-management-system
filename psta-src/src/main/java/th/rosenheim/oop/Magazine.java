@@ -4,7 +4,7 @@ import java.time.LocalDate;
 
 /**
  * @author Chuan Hn Wong - 1084380
- * Concrete class - Magazine in the library
+ * Concrete class - Magazine in library
  */
 public class Magazine extends LibraryItem implements Borrowable {
     private String issn;

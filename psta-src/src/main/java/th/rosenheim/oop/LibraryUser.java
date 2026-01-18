@@ -117,7 +117,7 @@ public class LibraryUser {
 
     /**
      * Returns a hash code based on the user's ID
-     * all users with the same ID will have the same hash code
+     * All users with the same ID will have the same hash code
      * @return hash code value
      */
     @Override

@@ -2,7 +2,7 @@ package th.rosenheim.oop;
 
 /**
  * @author Chuan Hn Wong - 1084380
- * Interface for items that can be borrowed and returned
+ * Interface for items that can be borrowed & returned
  */
 public interface Borrowable {
     /**

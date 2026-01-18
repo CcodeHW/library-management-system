@@ -4,7 +4,7 @@ import java.time.LocalDate;
 
 /**
  * @author Chuan Hn Wong - 1084380
- * Concrete class - Book in the library
+ * Concrete class - Book in library
  * implements 'Comparable' for natural ordering by title
  */
 public class Book extends LibraryItem implements Borrowable,Comparable<Book> {

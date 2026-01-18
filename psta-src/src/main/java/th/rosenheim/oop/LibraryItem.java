@@ -96,7 +96,7 @@ public abstract class LibraryItem {
         if(this == obj){
             return true;
         }
-        // Compared object must not be null or must be the same class (eg: book to book/DVD to DVD)
+        // Compared object must not be null or must be the same class (eg. book to book/DVD to DVD)
         if(obj == null || getClass() != obj.getClass()){
             return false;
         }
