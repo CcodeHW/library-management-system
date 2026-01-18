@@ -148,11 +148,23 @@ class AppTest {
     @Test
     @DisplayName("Test returning item that has not been borrowed")
     void testReturnNotBorrowedItem(){
+        assertTrue(library.getItems().containsKey("B100"));
+
+        boolean result = library.returnItem("B100","S100");
+
+        assertFalse(result, "Item that has not been borrowed cannot be returned, should return false");
+
+    }
+
+    @Test
+    @DisplayName("Test returning item that is not in the library")
+    void testReturnUnavailableItem(){
         ItemNotFoundException exception = assertThrows(
                 ItemNotFoundException.class,
                 () -> library.returnItem("B111","S100"));
 
-        assertTrue(exception.getMessage().contains("not found in the system"),"Item that has not been borrowed cannot be returned");
+        assertTrue(exception.getMessage().contains("not found in the system"),
+                "Item not found in library should return ItemNotFoundException");
     }
 
     @Test
@@ -217,12 +229,12 @@ class AppTest {
         Book b2 = new Book("B222","Banana","Author 2", "222-2222222222","Genre 2");
         Book b3 = new Book("B333","Cherry","Author 3", "333-3333333333","Genre 3");
 
-        List<Book> books = List.of(b1, b3, b2); // make them not in order
-        List<Book> sorted = books.stream().sorted().toList();
+        List<Book> books = new ArrayList<>(Arrays.asList(b1, b3, b2));  // make them not in order
+        Collections.sort(books);
 
-        assertEquals("Apple", sorted.get(0).getTitle(), "Book 1 should come first ");
-        assertEquals("Banana", sorted.get(1).getTitle(), "Book 2 should come second ");
-        assertEquals("Cherry", sorted.get(2).getTitle(), "Book 3 should come third");
+        assertEquals("Apple", books.get(0).getTitle(), "Book 1 should come first ");
+        assertEquals("Banana", books.get(1).getTitle(), "Book 2 should come second ");
+        assertEquals("Cherry", books.get(2).getTitle(), "Book 3 should come third");
     }
 
     @Test

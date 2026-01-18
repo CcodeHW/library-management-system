@@ -39,7 +39,7 @@ calling getDetails() polymorphically
 6. JUnit Tests: 
 - Tests for borrowing, returning, searching and handling exception etc
 7. Comparable Interface: 
-- Book.java implements 'Comparable<Book>' for natural ordering by title
+- Book.java implements 'Comparable<Book>' for natural ordering by title (case-insensitive)
 8. Comparator:
 - BookTitleComparator.java: custom comparator for sorting books by title (case-insensitive)
 9. Exception: 
