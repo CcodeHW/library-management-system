@@ -33,7 +33,7 @@ class AppTest {
     @DisplayName("Test adding items to library")
     void testAddValidItem(){
         Book newBook = new Book("B101", "New Book", "New Author", "000-0000000000", "Test Genre");
-        Magazine newMagazine = new  Magazine("M101","New Magazine", "New Author","000-0000000000",000,"Test Publisher");
+        Magazine newMagazine = new Magazine("M101","New Magazine", "New Author","000-0000000000",000,"Test Publisher");
 
         library.addItem(newBook);
         library.addItem(newMagazine);
@@ -42,6 +42,32 @@ class AppTest {
         assertEquals(4, items.size(),"Library should have 4 items - 2 Books, 2 Magazines");
         assertTrue(items.containsKey("B101"), "New book should be in library");
         assertTrue(items.containsKey("M101"),"New magazine should be in library");
+    }
+
+    @Test
+    @DisplayName("Test removing items from library")
+    void testRemoveValidItem(){
+        Book newBook = new Book("B101", "New Book", "New Author", "000-0000000000", "Test Genre");
+        library.addItem(newBook);
+
+        assertTrue(library.getItems().containsKey("B101"), "Book B101 should exists before removal");
+        assertEquals(3, library.getItems().size(),"Total items in library should be 3 before removal");
+
+        boolean removalSuccess = library.removeItem("B101");
+
+        assertTrue(removalSuccess,"Book 'B101' should be removed from library already");
+        assertEquals(2, library.getItems().size(), "Total items in library should be 2 after removal");
+    }
+
+    @Test
+    @DisplayName("Test removing items not from library")
+    void testRemoveInvalidItems(){
+        assertEquals(2, library.getItems().size(),"Total items in library should be 3 before removal");
+
+        boolean removalFail = library.removeItem("B101");
+
+        assertFalse(removalFail,"Book 'B101' should fail to be removed since it does not exists in library");
+        assertEquals(2,library.getItems().size(),"Total items in library should still be 2 after removal");
     }
 
     @Test
